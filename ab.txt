@@ -1,0 +1,194 @@
+🎯 PROMPT POUR GEMINI
+
+
+Tu es un expert Next.js 14+ (App Router), Tailwind CSS, Framer Motion et UI/UX design haut de gamme. Je veux que tu codes un projet complet : un site vitrine pour une pâtisserie artisanale, entièrement personnalisable via un dashboard admin.
+
+🏗️ STACK TECHNIQUE
+
+Next.js 14+ avec App Router (/app)
+Tailwind CSS pour le styling
+Framer Motion pour les animations
+Zustand pour le state management du dashboard
+next-themes pour le mode clair/sombre
+Lucide React pour les icônes
+@next/font avec Google Fonts (ex: Playfair Display + DM Sans)
+shadcn/ui pour les composants du dashboard
+
+
+🎨 DESIGN SYSTEM — IDENTITÉ VISUELLE
+Crée un design system avec les variables CSS suivantes dans globals.css :
+
+Palette : beige chaud #F5EFE6, rose poudré #E8C4B8, chocolat profond #3D1C08, or doux #C9A84C, blanc cassé #FFFDF9
+Typography : Playfair Display (titres, élégant), DM Sans (corps, lisible)
+Border radius : très arrondis (2xl, 3xl) pour une sensation douce et moderne
+Shadows : ombres chaudes légèrement colorées (teintées rose/beige)
+Glassmorphism sur certains composants (cartes produits, navbar scrollée)
+Animations : transitions fluides 300-500ms, effets hover magnétiques sur les boutons, scroll reveal sur chaque section
+
+
+📄 PAGES DU SITE VITRINE (/)
+1. Navbar
+
+Logo (texte ou image uploadable via dashboard)
+Liens : Accueil, Notre carte, Notre histoire, Galerie, Contact
+CTA bouton "Commander" avec effet shimmer doré
+Sticky avec glassmorphism au scroll
+Menu burger animé sur mobile
+
+2. Hero Section
+
+Fullscreen avec image de fond ou vidéo (configurable)
+Titre H1 animé mot par mot (Framer Motion)
+Sous-titre et bouton CTA
+Badge flottant animé (ex: "Fait maison chaque jour 🍰")
+Scroll indicator animé
+
+3. Features Strip
+
+4 icônes avec texte : "Recettes artisanales", "Ingrédients locaux", "Commande sur mesure", "Livraison domicile"
+Fond chocolat ou beige foncé, icônes en or
+
+4. Section Produits Vedettes
+
+Grille de 3 à 6 cartes produits (configurables via dashboard)
+Chaque carte : image, nom, description courte, prix, badge (Nouveau / Bestseller)
+Hover : légère élévation + overlay avec bouton "Voir plus"
+Filtres par catégorie (gâteaux, macarons, tartes, viennoiseries)
+
+5. Section Notre Histoire
+
+Layout split : texte à gauche, image à droite
+Timeline animée ou chiffres clés (ex: 15 ans d'expérience, 200+ recettes)
+Fond beige très doux
+
+6. Galerie
+
+Masonry grid ou grille CSS avec images uploadables
+Lightbox au clic (utilise yet-another-react-lightbox)
+Filtre par catégorie
+
+7. Témoignages
+
+Carrousel auto-scroll (Embla Carousel ou Swiper)
+Étoiles animées, photo client, texte, prénom
+Fond rose poudré doux
+
+8. Section CTA / Commande
+
+Fond sombre (chocolat)
+Titre accrocheur, description, bouton WhatsApp ou formulaire
+
+9. Footer
+
+Logo, liens, réseaux sociaux (icônes animées au hover)
+Horaires d'ouverture, adresse, téléphone
+Tous modifiables depuis le dashboard
+
+
+⚙️ DASHBOARD ADMIN (/admin)
+Architecture
+
+Route protégée avec middleware Next.js (mot de passe hardcodé pour commencer)
+Layout avec sidebar fixe animée, collapse sur mobile
+Navigation : Général, Hero, Produits, Galerie, Témoignages, Contact, Apparence
+
+Modules du dashboard :
+1. Général
+
+Nom de la pâtisserie, slogan, logo (upload image)
+Infos de contact : téléphone, email, adresse, horaires
+Liens réseaux sociaux
+
+2. Apparence
+
+Sélecteur de couleur primaire / secondaire / fond (color picker)
+Choix de la police (dropdown : Playfair, Cormorant, Lora...)
+Toggle mode clair / sombre
+Preview live à droite (iframe ou composant React)
+
+3. Hero
+
+Upload image ou URL vidéo
+Éditeur de titre, sous-titre, texte du bouton CTA
+Toggle pour activer/désactiver le badge flottant + son texte
+
+4. Produits
+
+Liste des produits avec CRUD (ajouter, modifier, supprimer)
+Formulaire : nom, description, prix, catégorie, image, badges
+Drag & drop pour réordonner
+
+5. Galerie
+
+Upload multiple d'images
+Recadrage basique (si possible)
+Réorganisation par drag & drop
+
+6. Témoignages
+
+CRUD des avis clients
+Champs : prénom, note (1-5 étoiles), texte, photo (optionnelle)
+
+Persistance
+
+Utilise localStorage via Zustand persist pour stocker toutes les configs (pas de backend pour l'instant)
+Toutes les modifications doivent se refléter en temps réel sur le site vitrine via le store partagé
+
+
+📱 RESPONSIVE & ACCESSIBILITÉ
+
+Breakpoints : mobile 375px, tablet 768px, desktop 1280px, large 1536px
+Touch gestures sur mobile (swipe carrousel)
+aria-label, alt sur toutes les images
+Contraste WCAG AA minimum respecté
+Skeleton loaders sur les images
+
+
+✨ EFFETS & MICRO-INTERACTIONS (PRIORITÉ)
+
+Curseur personnalisé (cercle doré qui suit la souris sur desktop)
+Page loader animé avec logo (1.5s)
+Scroll progress bar en haut de page
+Boutons avec ripple effect ou shimmer
+Images avec parallax léger au scroll
+Nombres animés (compteurs) dans la section chiffres clés
+Toast notifications dans le dashboard (succès / erreur)
+
+
+📁 STRUCTURE DU PROJET
+/app
+  /page.tsx              ← Site vitrine
+  /admin
+    /layout.tsx
+    /page.tsx            ← Dashboard overview
+    /produits/page.tsx
+    /galerie/page.tsx
+    /apparence/page.tsx
+    ...
+/components
+  /vitrine/              ← Composants du site
+  /dashboard/            ← Composants admin
+  /ui/                   ← shadcn/ui + composants communs
+/store
+  /useSiteStore.ts       ← Zustand store global
+/types
+  /index.ts              ← Types TypeScript
+/public
+  /images/
+
+Commence par générer dans cet ordre :
+
+Le design system (globals.css + tailwind.config.ts)
+Le store Zustand (useSiteStore.ts) avec toutes les données configurables
+Les composants du site vitrine section par section
+Le layout et les pages du dashboard
+
+Pour chaque composant, privilégie : qualité du code TypeScript strict, composants réutilisables, props bien typées, et un rendu visuel digne d'un site premium de pâtisserie parisienne.
+
+
+💡 Conseils pour utiliser ce prompt
+
+Donne-le en plusieurs fois à Gemini : d'abord le design system + store, puis section par section
+Demande-lui de commencer par useSiteStore.ts pour que toute la logique de personnalisation soit posée avant les composants
+Si Gemini hallucine des librairies, précise : "utilise uniquement les packages que j'ai listés"
+Pour le dashboard, demande-lui explicitement une preview live côte à côte avec les formulaires
